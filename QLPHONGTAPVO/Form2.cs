@@ -13,11 +13,6 @@ namespace QLPHONGTAPVO
 {
     public partial class Form2 : Form
     {
-        //public Form2z(string hocVienIDz)
-        //{
-        //    InitializeComponent();
-        //    hocVienID = hocVienIDz;
-        //}
         public Form2()
         {
             InitializeComponent();
@@ -74,45 +69,118 @@ namespace QLPHONGTAPVO
                     }
                 }
             }
-            //using (var context = new Model1())
-            //{
-            //    // Lấy thông tin học viên cùng với các thông tin liên quan
-            //    var hocVien = context.HocViens
-            //        .Include(hv => hv.TheHocViens)  // Bao gồm thông tin về Thẻ Học Viên
-            //        .Include(hv => hv.TheHocViens.Select(thv => thv.LopHoc))  // Bao gồm thông tin về Lớp Học của Thẻ Học Viên
-            //        .Include(hv => hv.TheHocViens.Select(thv => thv.LopHoc.HuanLuyenVien))  // Bao gồm thông tin về HLV của Lớp Học
-            //        .FirstOrDefault(hv => hv.ID_HocVien == selectedHocVienID);
 
-            //    if (hocVien != null)
-            //    {
-            //        // Lấy thông tin thẻ học viên (có thể là danh sách hoặc một thẻ học viên duy nhất)
-            //        var theHocVien = hocVien.TheHocViens.FirstOrDefault();
+        }
 
-            //        if (theHocVien != null)
-            //        {
-            //            // Hiển thị thông tin thẻ học viên trong DataGridView hoặc các control khác
-            //            dtg_HLV.Rows.Clear();  // Dọn dẹp trước khi thêm dữ liệu mới
+        private void btn_Them_Click(object sender, EventArgs e)
+        {
+            FormHLV formHLV = new FormHLV();
+            formHLV.ShowDialog(); // Hiển thị form nhập liệu dưới dạng cửa sổ modal (đợi người dùng nhập liệu)
 
-            //            // Thêm dữ liệu vào DataGridView với thông tin thẻ học viên và thông tin huấn luyện viên
-            //            dtg_HLV.Rows.Add(
-            //                theHocVien.ID_TheHV,  // ID Thẻ Học Viên
-            //                theHocVien.NgayDangKy?.ToString("yyyy-MM-dd"),  // Ngày đăng ký (nếu có)
-            //                theHocVien.LopHoc.TenLop,  // Tên lớp học của học viên
-            //                theHocVien.LopHoc.HuanLuyenVien.TenHLV,  // Tên huấn luyện viên của lớp học
-            //                theHocVien.LopHoc.HuanLuyenVien.SDT,  // Số điện thoại của huấn luyện viên
-            //                theHocVien.LopHoc.HuanLuyenVien.DiaChi  // Địa chỉ của huấn luyện viên
-            //            );
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Không tìm thấy thẻ học viên cho học viên này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Không tìm thấy học viên với ID này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    }
-            //}
+            // Kiểm tra nếu form được đóng và người dùng nhấn "OK" (tức là huấn luyện viên đã được thêm thành công)
+            if (formHLV.DialogResult == DialogResult.OK)
+            {
+                HuanLuyenVien newHLV = formHLV.HLVMoi;
+                dtg_HLV.Rows.Add(newHLV.ID_HLV, newHLV.TenHLV, newHLV.GioiTinh,
+                                 newHLV.NgaySinh.Value.ToString("yyyy-MM-dd"), newHLV.SDT,
+                                 newHLV.ChuyenMon, newHLV.DiaChi);
+            }
+        }
+
+        private void btn_Sua_Click(object sender, EventArgs e)
+        {
+            if (dtg_HLV.SelectedRows.Count > 0)
+            {
+                int index = dtg_HLV.SelectedRows[0].Index;
+                var selectedHLVID = dtg_HLV.Rows[index].Cells["col_IDHLV"].Value.ToString();
+
+                // Create HuanLuyenVien object with selected row data
+                var hlv = new HuanLuyenVien
+                {
+                    ID_HLV = selectedHLVID,
+                    TenHLV = dtg_HLV.Rows[index].Cells["col_TenHLV"].Value.ToString(),
+                    GioiTinh = dtg_HLV.Rows[index].Cells["col_GioiTinh"].Value.ToString(),
+                    NgaySinh = Convert.ToDateTime(dtg_HLV.Rows[index].Cells["col_NgaySinh"].Value),
+                    SDT = dtg_HLV.Rows[index].Cells["col_SDT"].Value.ToString(),
+                    ChuyenMon = dtg_HLV.Rows[index].Cells["col_ChuyenMon"].Value.ToString(),
+                    DiaChi = dtg_HLV.Rows[index].Cells["col_DiaChi"].Value.ToString()
+                };
+
+                // Open FormHLV to edit the selected trainer
+                FormHLV formHLV = new FormHLV(hlv);
+                formHLV.RefreshData(hlv);
+
+                if (formHLV.ShowDialog() == DialogResult.OK)
+                {
+                    // Get the updated trainer data from FormHLV
+                    var updatedHLV = formHLV.HLVMoi;
+
+                    // Update the DataGridView with the edited data
+                    dtg_HLV.Rows[index].Cells["col_TenHLV"].Value = updatedHLV.TenHLV;
+                    dtg_HLV.Rows[index].Cells["col_GioiTinh"].Value = updatedHLV.GioiTinh;
+                    dtg_HLV.Rows[index].Cells["col_NgaySinh"].Value = updatedHLV.NgaySinh.Value.ToString("yyyy-MM-dd");
+                    dtg_HLV.Rows[index].Cells["col_SDT"].Value = updatedHLV.SDT;
+                    dtg_HLV.Rows[index].Cells["col_ChuyenMon"].Value = updatedHLV.ChuyenMon;
+                    dtg_HLV.Rows[index].Cells["col_DiaChi"].Value = updatedHLV.DiaChi;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một dòng để sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
+        private void btn_Xoa_Click(object sender, EventArgs e)
+        {
+            if (dtg_HLV.SelectedRows.Count > 0)
+            {
+                // Lấy dòng được chọn trong DataGridView
+                var selectedRow = dtg_HLV.SelectedRows[0];
+
+                // Kiểm tra nếu cột "ID_HocVien" tồn tại và lấy giá trị của nó
+                if (selectedRow.Cells["col_IDHLV"] != null)
+                {
+                    string idHLV = selectedRow.Cells["col_IDHLV"].Value.ToString();
+
+                    // Hỏi người dùng xác nhận trước khi xóa
+                    DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa học viên này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        // Xóa học viên khỏi cơ sở dữ liệu
+                        using (var context = new Model1())
+                        {
+                            var hlvToDelete = context.HuanLuyenViens.FirstOrDefault(hv => hv.ID_HLV == idHLV);
+                            if (hlvToDelete != null)
+                            {
+                                context.HuanLuyenViens.Remove(hlvToDelete);
+                                context.SaveChanges();
+                            }
+                        }
+
+                        // Xóa dòng được chọn khỏi DataGridView
+                        dtg_HLV.Rows.Remove(selectedRow);
+
+                        // Thông báo cho người dùng
+                        MessageBox.Show("Huan Luyen Vien đã được xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy cột ID_HLV!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một học viên để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btn_Thoat_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

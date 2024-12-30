@@ -8,23 +8,33 @@ namespace QLPHONGTAPVO
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model1")
+            : base("name=TapVoModel")
         {
         }
 
+        public virtual DbSet<Administrator> Administrators { get; set; }
         public virtual DbSet<HocVien> HocViens { get; set; }
         public virtual DbSet<HuanLuyenVien> HuanLuyenViens { get; set; }
         public virtual DbSet<LopHoc> LopHocs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TheHocVien> TheHocViens { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<HocVien>()
-                .Property(e => e.ID_HocVien)
+            modelBuilder.Entity<Administrator>()
+                .Property(e => e.ID_AD)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Administrator>()
+                .Property(e => e.Username)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Administrator>()
+                .Property(e => e.Pass)
                 .IsUnicode(false);
 
             modelBuilder.Entity<HocVien>()
-                .Property(e => e.TenHocVien)
+                .Property(e => e.ID_HocVien)
                 .IsUnicode(false);
 
             modelBuilder.Entity<HocVien>()
@@ -41,25 +51,16 @@ namespace QLPHONGTAPVO
                 .IsUnicode(false);
 
             modelBuilder.Entity<HocVien>()
-                .HasMany(e => e.TheHocViens)
-                .WithOptional(e => e.HocVien)
-                .WillCascadeOnDelete();
+                .Property(e => e.ID_Lop)
+                .IsUnicode(false);
 
             modelBuilder.Entity<HuanLuyenVien>()
                 .Property(e => e.ID_HLV)
                 .IsUnicode(false);
 
             modelBuilder.Entity<HuanLuyenVien>()
-                .Property(e => e.TenHLV)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<HuanLuyenVien>()
                 .Property(e => e.GioiTinh)
                 .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<HuanLuyenVien>()
-                .Property(e => e.DiaChi)
                 .IsUnicode(false);
 
             modelBuilder.Entity<HuanLuyenVien>()
@@ -80,10 +81,6 @@ namespace QLPHONGTAPVO
                 .IsUnicode(false);
 
             modelBuilder.Entity<LopHoc>()
-                .Property(e => e.TenLop)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<LopHoc>()
                 .Property(e => e.ID_HLV)
                 .IsUnicode(false);
 
@@ -92,7 +89,7 @@ namespace QLPHONGTAPVO
                 .IsUnicode(false);
 
             modelBuilder.Entity<LopHoc>()
-                .HasMany(e => e.TheHocViens)
+                .HasMany(e => e.HocViens)
                 .WithOptional(e => e.LopHoc)
                 .WillCascadeOnDelete();
 

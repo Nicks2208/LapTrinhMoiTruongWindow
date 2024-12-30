@@ -35,6 +35,11 @@ namespace QLPHONGTAPVO
         [StringLength(15)]
         public string SDT { get; set; }
 
+        [StringLength(10)]
+        public string ID_Lop { get; set; }
+
+        public virtual LopHoc LopHoc { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TheHocVien> TheHocViens { get; set; }
     }

@@ -12,6 +12,7 @@ namespace QLPHONGTAPVO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LopHoc()
         {
+            HocViens = new HashSet<HocVien>();
             TheHocViens = new HashSet<TheHocVien>();
         }
 
@@ -28,6 +29,9 @@ namespace QLPHONGTAPVO
 
         [StringLength(50)]
         public string ThoiGianHoc { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HocVien> HocViens { get; set; }
 
         public virtual HuanLuyenVien HuanLuyenVien { get; set; }
 
