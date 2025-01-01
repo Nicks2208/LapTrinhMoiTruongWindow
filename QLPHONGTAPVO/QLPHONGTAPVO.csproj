@@ -86,6 +86,12 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLopHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLopHoc.Designer.cs">
+      <DependentUpon>FormLopHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLopHoc.resx">
+      <DependentUpon>FormLopHoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -222,6 +231,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\right-down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\z6180176868037_e35b7b2c4479869e3a2791acdd47b843.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\z6180179805646_9b1b4c37463b2597caf670e9702487ab.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\phpwltzyz-hoc-muay-thai-tphcm-jpg_1685113336.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\phpwltzyz-hoc-muay-thai-tphcm-jpg_16851133361.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vlcsnap-2023-05-31-12h56m52s635+copy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\126520998_1575662412821657_2173811159546828327_o.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hoc-muay-thai-tphcm-tai-Hit-Muay-Thai-Fitness-Center.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reload.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

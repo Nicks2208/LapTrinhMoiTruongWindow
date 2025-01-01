@@ -63,6 +63,16 @@ namespace QLPHONGTAPVO.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _126520998_1575662412821657_2173811159546828327_o {
+            get {
+                object obj = ResourceManager.GetObject("126520998_1575662412821657_2173811159546828327_o", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _264460382_245443397657545_4079505032131170792_n {
             get {
                 object obj = ResourceManager.GetObject("264460382_245443397657545_4079505032131170792_n", resourceCulture);
@@ -193,6 +203,16 @@ namespace QLPHONGTAPVO.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hoc_muay_thai_tphcm_tai_Hit_Muay_Thai_Fitness_Center {
+            get {
+                object obj = ResourceManager.GetObject("hoc-muay-thai-tphcm-tai-Hit-Muay-Thai-Fitness-Center", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LOGO_02 {
             get {
                 object obj = ResourceManager.GetObject("LOGO-02", resourceCulture);
@@ -253,6 +273,26 @@ namespace QLPHONGTAPVO.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap phpwltzyz_hoc_muay_thai_tphcm_jpg_1685113336 {
+            get {
+                object obj = ResourceManager.GetObject("phpwltzyz-hoc-muay-thai-tphcm-jpg_1685113336", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap phpwltzyz_hoc_muay_thai_tphcm_jpg_16851133361 {
+            get {
+                object obj = ResourceManager.GetObject("phpwltzyz-hoc-muay-thai-tphcm-jpg_16851133361", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pngtree_a_man_practicing_martial_arts_or_karate_fast_kick_fighting_technique_image_15625686 {
             get {
                 object obj = ResourceManager.GetObject("pngtree-a-man-practicing-martial-arts-or-karate-fast-kick-fighting-technique-imag" +
@@ -267,6 +307,16 @@ namespace QLPHONGTAPVO.Properties {
         internal static System.Drawing.Bitmap pngtree_korean_taekwondo_martial_arts_practice_png_image_3737571 {
             get {
                 object obj = ResourceManager.GetObject("pngtree-korean-taekwondo-martial-arts-practice-png-image_3737571", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reload {
+            get {
+                object obj = ResourceManager.GetObject("reload", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -314,6 +364,16 @@ namespace QLPHONGTAPVO.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap vlcsnap_2023_05_31_12h56m52s635_copy {
+            get {
+                object obj = ResourceManager.GetObject("vlcsnap-2023-05-31-12h56m52s635+copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap webinar {
             get {
                 object obj = ResourceManager.GetObject("webinar", resourceCulture);
@@ -337,6 +397,26 @@ namespace QLPHONGTAPVO.Properties {
         internal static System.Drawing.Bitmap wp8170036 {
             get {
                 object obj = ResourceManager.GetObject("wp8170036", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap z6180176868037_e35b7b2c4479869e3a2791acdd47b843 {
+            get {
+                object obj = ResourceManager.GetObject("z6180176868037_e35b7b2c4479869e3a2791acdd47b843", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap z6180179805646_9b1b4c37463b2597caf670e9702487ab {
+            get {
+                object obj = ResourceManager.GetObject("z6180179805646_9b1b4c37463b2597caf670e9702487ab", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

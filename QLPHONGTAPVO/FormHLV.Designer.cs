@@ -59,7 +59,7 @@
             // 
             // combo_ChuyenMon
             // 
-            this.combo_ChuyenMon.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.combo_ChuyenMon.BackColor = System.Drawing.SystemColors.ControlLight;
             this.combo_ChuyenMon.FormattingEnabled = true;
             this.combo_ChuyenMon.Items.AddRange(new object[] {
             "Karate",
@@ -72,7 +72,7 @@
             // rb_Nu
             // 
             this.rb_Nu.AutoSize = true;
-            this.rb_Nu.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.rb_Nu.BackColor = System.Drawing.SystemColors.ControlLight;
             this.rb_Nu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rb_Nu.Location = new System.Drawing.Point(740, 69);
             this.rb_Nu.Name = "rb_Nu";
@@ -85,7 +85,7 @@
             // rb_Nam
             // 
             this.rb_Nam.AutoSize = true;
-            this.rb_Nam.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.rb_Nam.BackColor = System.Drawing.SystemColors.ControlLight;
             this.rb_Nam.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rb_Nam.Location = new System.Drawing.Point(636, 69);
             this.rb_Nam.Name = "rb_Nam";
@@ -112,7 +112,6 @@
             this.btn_DongY.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.btn_DongY.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_DongY.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_DongY.Image = global::QLPHONGTAPVO.Properties.Resources._30_4_1_5;
             this.btn_DongY.Location = new System.Drawing.Point(208, 348);
             this.btn_DongY.Name = "btn_DongY";
             this.btn_DongY.Size = new System.Drawing.Size(161, 49);
@@ -130,7 +129,7 @@
             // 
             // txt_DiaChi
             // 
-            this.txt_DiaChi.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.txt_DiaChi.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txt_DiaChi.Location = new System.Drawing.Point(154, 243);
             this.txt_DiaChi.Name = "txt_DiaChi";
             this.txt_DiaChi.Size = new System.Drawing.Size(392, 22);
@@ -138,25 +137,25 @@
             // 
             // txt_SDT
             // 
-            this.txt_SDT.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.txt_SDT.Location = new System.Drawing.Point(125, 182);
+            this.txt_SDT.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txt_SDT.Location = new System.Drawing.Point(154, 183);
             this.txt_SDT.Name = "txt_SDT";
             this.txt_SDT.Size = new System.Drawing.Size(227, 22);
             this.txt_SDT.TabIndex = 40;
             // 
             // txt_TenHLV
             // 
-            this.txt_TenHLV.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.txt_TenHLV.Location = new System.Drawing.Point(194, 124);
+            this.txt_TenHLV.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txt_TenHLV.Location = new System.Drawing.Point(154, 126);
             this.txt_TenHLV.Name = "txt_TenHLV";
             this.txt_TenHLV.Size = new System.Drawing.Size(270, 22);
             this.txt_TenHLV.TabIndex = 39;
             // 
             // txt_IDHLV
             // 
-            this.txt_IDHLV.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.txt_IDHLV.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txt_IDHLV.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.txt_IDHLV.Location = new System.Drawing.Point(194, 71);
+            this.txt_IDHLV.Location = new System.Drawing.Point(154, 73);
             this.txt_IDHLV.Name = "txt_IDHLV";
             this.txt_IDHLV.Size = new System.Drawing.Size(192, 22);
             this.txt_IDHLV.TabIndex = 38;
@@ -185,7 +184,6 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Image = global::QLPHONGTAPVO.Properties.Resources.Cskgtavn__1_;
             this.label4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.label4.Location = new System.Drawing.Point(518, 124);
             this.label4.Name = "label4";
@@ -199,7 +197,6 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Image = global::QLPHONGTAPVO.Properties.Resources.coach;
             this.label3.Location = new System.Drawing.Point(518, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 23);
@@ -237,7 +234,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::QLPHONGTAPVO.Properties.Resources.compute_ea4c57a4;
+            this.BackgroundImage = global::QLPHONGTAPVO.Properties.Resources.vlcsnap_2023_05_31_12h56m52s635_copy;
             this.ClientSize = new System.Drawing.Size(892, 467);
             this.Controls.Add(this.rb_Nu);
             this.Controls.Add(this.rb_Nam);

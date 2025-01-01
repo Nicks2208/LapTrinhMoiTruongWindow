@@ -83,7 +83,7 @@ namespace QLPHONGTAPVO
                     context.HuanLuyenViens.Add(newHLV);
                     context.SaveChanges();
                     HLVMoi = newHLV;
-                    MessageBox.Show("Thêm học viên mới thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Thêm lớp học mới thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -99,7 +99,11 @@ namespace QLPHONGTAPVO
                     existingHLV.DiaChi = diaChi;
                     context.SaveChanges();
                     HLVMoi = existingHLV;
-                    MessageBox.Show("Cập nhật học viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cập nhật lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                    Form1 form1 = new Form1();
+                    form1.Load_HLV();
                 }
             }
 

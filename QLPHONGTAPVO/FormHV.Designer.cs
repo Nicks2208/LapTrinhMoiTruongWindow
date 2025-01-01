@@ -78,7 +78,6 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Image = global::QLPHONGTAPVO.Properties.Resources.coach;
             this.label3.Location = new System.Drawing.Point(514, 53);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 23);
@@ -89,7 +88,6 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Image = global::QLPHONGTAPVO.Properties.Resources.Cskgtavn__1_;
             this.label4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.label4.Location = new System.Drawing.Point(514, 106);
             this.label4.Name = "label4";
@@ -139,7 +137,7 @@
             // txt_SDT
             // 
             this.txt_SDT.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.txt_SDT.Location = new System.Drawing.Point(121, 164);
+            this.txt_SDT.Location = new System.Drawing.Point(150, 166);
             this.txt_SDT.Name = "txt_SDT";
             this.txt_SDT.Size = new System.Drawing.Size(227, 22);
             this.txt_SDT.TabIndex = 8;
@@ -161,10 +159,9 @@
             // 
             // btn_Them
             // 
-            this.btn_Them.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btn_Them.BackColor = System.Drawing.Color.SteelBlue;
             this.btn_Them.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Them.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_Them.Image = global::QLPHONGTAPVO.Properties.Resources._30_4_1_5;
             this.btn_Them.Location = new System.Drawing.Point(204, 330);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(161, 49);
@@ -233,8 +230,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::QLPHONGTAPVO.Properties.Resources.compute_ea4c57a4;
-            this.ClientSize = new System.Drawing.Size(887, 450);
+            this.BackgroundImage = global::QLPHONGTAPVO.Properties.Resources.z6180179805646_9b1b4c37463b2597caf670e9702487ab;
+            this.ClientSize = new System.Drawing.Size(955, 497);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cb_Lop);
             this.Controls.Add(this.rb_Nu);

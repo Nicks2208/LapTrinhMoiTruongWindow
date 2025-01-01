@@ -21,10 +21,12 @@ namespace QLPHONGTAPVO
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Load_QLHOCVO();
+            Load_HV();
             Load_HLV();
+            Load_LopHoc();
         }
-        private void Load_QLHOCVO()
+
+        public void Load_HV()
         {
             using (var context = new Model1())
             {
@@ -37,18 +39,16 @@ namespace QLPHONGTAPVO
                 foreach (var z in az)
                 {
                     string tenLop = z.LopHoc != null ? z.LopHoc.TenLop : "Chưa có lớp";
-                    dtg_QLHOCVO.Rows.Add(z.ID_HocVien, z.TenHocVien, z.GioiTinh, z.NgaySinh?.ToString("yyyy-MM-dd"), z.SDT, z.DiaChi, tenLop);
+                    dtg_QLHOCVO.Rows.Add(z.ID_HocVien, z.TenHocVien, z.GioiTinh, z.NgaySinh?.ToString("yyyy-MM-dd"), z.SDT, z.DiaChi, tenlop);
                 }
+
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        public void RS_TenLop()
         {
-            Form2 form2 = new Form2();
-
-            form2.Load_HLV();
-            form2.Show();
+            dtg_QLHOCVO.Rows.Clear();
         }
+        /* -------------------------------- HỌC VIÊN  -------------------------------- */
         private void btn_TimHLV_Click(object sender, EventArgs e)
         {
             try
@@ -85,7 +85,7 @@ namespace QLPHONGTAPVO
                 string sdt = dtg_QLHOCVO.Rows[index].Cells["col_SDT"].Value.ToString();
                 string diaChi = dtg_QLHOCVO.Rows[index].Cells["col_DiaChi"].Value.ToString();
                 string tenLop = dtg_QLHOCVO.Rows[index].Cells["col_Lop"].Value.ToString();
-             
+
 
                 // Set values to the textboxes
                 txt_IDHV.Text = idHocVien;
@@ -109,33 +109,23 @@ namespace QLPHONGTAPVO
 
         private void btn_Search_Click(object sender, EventArgs e)
         {
-            
+
         }
-        private void BindGrid(List<HocVien> listHocVien)
+        public void BindGrid(List<HocVien> listHocVien)
         {
+
             dtg_QLHOCVO.Rows.Clear();
-    
-            foreach (var item in listHocVien)
+
+            foreach (var z in listHocVien)
             {
-                // Thêm dòng mới vào DataGridView
-                int index = dtg_QLHOCVO.Rows.Add();
-        
-                // Gán giá trị cho các ô trong dòng hiện tại
-                dtg_QLHOCVO.Rows[index].Cells[0].Value = item.ID_HocVien;
-                dtg_QLHOCVO.Rows[index].Cells[1].Value = item.TenHocVien;
-                dtg_QLHOCVO.Rows[index].Cells[2].Value = item.GioiTinh;
-                dtg_QLHOCVO.Rows[index].Cells[3].Value = item.NgaySinh?.ToString("dd/MM/yyyy");
-                dtg_QLHOCVO.Rows[index].Cells[4].Value = item.DiaChi;
-                dtg_QLHOCVO.Rows[index].Cells[5].Value = item.SDT;
-                string tenLop = item.LopHoc != null ? item.LopHoc.TenLop : "Chưa có lớp";
-                dtg_QLHOCVO.Rows[index].Cells[6].Value = tenLop;
+                string tenLop = z.LopHoc != null ? z.LopHoc.TenLop : "Chưa có lớp";
+                dtg_QLHOCVO.Rows.Add(z.ID_HocVien, z.TenHocVien, z.GioiTinh, z.NgaySinh?.ToString("yyyy-MM-dd"), z.SDT, z.DiaChi, tenLop);
             }
         }
-
         private void txt_Search_TextChanged(object sender, EventArgs e)
         {
-            if(txt_Search.Text.Length == 0)
-                Load_QLHOCVO();
+            if (txt_Search.Text.Length == 0)
+                Load_HV();
             string searchTerm = txt_Search.Text.Trim().ToLower();
             using (var context = new Model1())
             {
@@ -155,7 +145,7 @@ namespace QLPHONGTAPVO
                 }
             }
         }
-      
+
         private void btn_ThemHV_Click(object sender, EventArgs e)
         {
             //FormHV formHV = new FormHV(AddHocVienMoi);
@@ -340,6 +330,8 @@ namespace QLPHONGTAPVO
         {
 
         }
+
+        /* -------------------------------- HUẤN LUYỆN VIÊN -------------------------------- */
         public void Load_HLV()
         {
             using (var context = new Model1())
@@ -463,6 +455,135 @@ namespace QLPHONGTAPVO
         private void tabPage4_Click(object sender, EventArgs e)
         {
 
+        }
+        /* -------------------------------- LỚP HỌC -------------------------------- */
+
+        public void Load_LopHoc()
+        {
+            using (var context = new Model1())
+            {
+
+                var az = context.LopHocs
+                    .ToList();
+
+                dtgLopHoc.Rows.Clear();
+                foreach (var z in az)
+                {
+                    string tenHLV = z.HuanLuyenVien != null ? z.HuanLuyenVien.TenHLV : "Chưa có HLV";
+                    dtgLopHoc.Rows.Add(z.ID_Lop, z.TenLop, tenHLV, z.ThoiGianHoc);
+                }
+            }
+            int solophoc = dtgLopHoc.Rows.Count;
+            if (dtgLopHoc.AllowUserToAddRows)
+            {
+                solophoc--; // Giảm đi 1 nếu cho phép thêm dòng trống
+            }
+            txt_tongsolophoc.Text = solophoc.ToString();
+
+
+
+        }
+        private void btn_ThemLop_Click(object sender, EventArgs e)
+        {
+            FormLopHoc formLopHoc = new FormLopHoc();
+            formLopHoc.ShowDialog();
+
+            if (formLopHoc.DialogResult == DialogResult.OK)
+            {
+                LopHoc newLopHoc = formLopHoc.LopHocMoi;
+                dtgLopHoc.Rows.Add(newLopHoc.ID_Lop, newLopHoc.TenLop, newLopHoc.ID_HLV, newLopHoc.ThoiGianHoc);
+            }
+        }
+
+        private void btn_SuaLop_Click(object sender, EventArgs e)
+        {
+            if (dtgLopHoc.SelectedRows.Count > 0)
+            {
+                int index = dtgLopHoc.SelectedRows[0].Index;
+                var selectedLopHocID = dtgLopHoc.Rows[index].Cells["col_IDLop"].Value.ToString();
+
+                var lopHoc = new LopHoc
+                {
+                    ID_Lop = selectedLopHocID,
+                    TenLop = dtgLopHoc.Rows[index].Cells["col_TenLop"].Value.ToString(),
+                    ThoiGianHoc = dtgLopHoc.Rows[index].Cells["col_ThoiGianHoc"].Value.ToString()
+                };
+
+                FormLopHoc formLopHoc = new FormLopHoc(lopHoc);
+                formLopHoc.RefeshData(lopHoc);
+                if (formLopHoc.ShowDialog() == DialogResult.OK)
+                {
+                    var updatedLopHoc = formLopHoc.LopHocMoi;
+
+
+                    dtgLopHoc.Rows[index].Cells["col_TenLop"].Value = updatedLopHoc.TenLop;
+                    dtgLopHoc.Rows[index].Cells["col_ThoiGianHoc"].Value = updatedLopHoc.ThoiGianHoc;
+                    using (var context = new Model1())
+                    {
+                        var huanluyenvien = context.HuanLuyenViens.FirstOrDefault(lh => lh.ID_HLV == updatedLopHoc.ID_HLV);
+                        if (huanluyenvien != null)
+                        {
+                            // Update the class name in DataGridView
+                            dtgLopHoc.Rows[index].Cells["col_IDHLV_Lop"].Value = huanluyenvien.TenHLV;
+                        }
+                        else
+                        {
+                            // In case the class is not found, you might want to handle it
+                            dtgLopHoc.Rows[index].Cells["col_IDHLV_Lop"].Value = "Chưa có HLV";
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một dòng để sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btn_XoaLop_Click(object sender, EventArgs e)
+        {
+            if (dtgLopHoc.SelectedRows.Count > 0)
+            {
+                // Lấy dòng được chọn trong DataGridView
+                var selectedRow = dtgLopHoc.SelectedRows[0];
+
+                // Kiểm tra nếu cột "ID_HocVien" tồn tại và lấy giá trị của nó
+                if (selectedRow.Cells["col_IDLop"] != null)
+                {
+                    string idLopHoc = selectedRow.Cells["col_IDLop"].Value.ToString();
+
+                    // Hỏi người dùng xác nhận trước khi xóa
+                    DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa lớp học này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        // Xóa học viên khỏi cơ sở dữ liệu
+                        using (var context = new Model1())
+                        {
+                            var lopHocToDelete = context.LopHocs.FirstOrDefault(hv => hv.ID_Lop == idLopHoc);
+                            if (lopHocToDelete != null)
+                            {
+                                context.LopHocs.Remove(lopHocToDelete);
+                                context.SaveChanges();
+                            }
+                        }
+
+                        // Xóa dòng được chọn khỏi DataGridView
+                        dtgLopHoc.Rows.Remove(selectedRow);
+
+                        // Thông báo cho người dùng
+                        MessageBox.Show("Lớp học đã được xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy cột ID_Lop!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một lớp học để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 
